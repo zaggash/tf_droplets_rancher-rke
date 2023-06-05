@@ -1,0 +1,23 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+#
+terraform.tfvars
+ssh_config
+id_rsa
+id_ed25519*
+*.pem
+
+# RKE generated files
+**/terraform-provider-*-tmp*/
+local-rancher_rke.log
+rancher-cluster.yaml
+cluster.yml
+*.rkestate
+kube_config_*
+kubeconfig*
