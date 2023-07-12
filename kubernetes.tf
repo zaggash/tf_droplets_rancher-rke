@@ -27,10 +27,32 @@ module "kubernetes_data" {
 resource "local_file" "rancher_kubeconfig_yaml" {
   filename        = "./kubeconfig_rke_local-rancher.yml"
   content         = module.kubernetes_data.rancher_kubeconfig_yaml
-  file_permission = "0400"
+  file_permission = "0644"
 
   provisioner "local-exec" {
     command = "rm -f ./kubeconfig_rke_local-rancher.yml"
+    when    = destroy
+  }
+}
+
+resource "local_file" "rke_cluster_yaml" {
+  filename        = "./rke-cluster.yaml"
+  content         = module.kubernetes_data.rke_cluster_yaml
+  file_permission = "0644"
+
+  provisioner "local-exec" {
+    command = "rm -f ./rke-cluster.yaml"
+    when    = destroy
+  }
+}
+
+resource "local_file" "rke_cluster_state" {
+  filename        = "./rke-cluster.rkestate"
+  content         = module.kubernetes_data.rke_cluster_state
+  file_permission = "0644"
+
+  provisioner "local-exec" {
+    command = "rm -f ./rke-cluster.rkestate"
     when    = destroy
   }
 }

@@ -4,8 +4,18 @@ output "rancher_url" {
 }
 
 output "rancher_kubeconfig_yaml" {
-  description = "Rancher kubeconfig file"
+  description = "Rancher RKE kubeconfig file"
   value       = rke_cluster.local-rancher.kube_config_yaml
+}
+
+output "rke_cluster_yaml" {
+  description = "Rancher RKE cluster.yaml file"
+  value       = rke_cluster.local-rancher.rke_cluster_yaml
+}
+
+output "rke_cluster_state" {
+  description = "Rancher RKE cluster.rkestate file"
+  value       = rke_cluster.local-rancher.rke_state
 }
 
 output "rke-custom_cluster_command" {
