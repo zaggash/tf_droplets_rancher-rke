@@ -26,6 +26,7 @@ resource "helm_release" "rancher_server" {
   create_namespace    = true
   wait                = true
 
+
   set {
     name              = "hostname"
     value             = var.rancher_dnsname
