@@ -1,5 +1,5 @@
 resource "rke_cluster" "local-rancher" {
-  
+
   dynamic "nodes" {
     for_each    = var.rancher-all
     content {
@@ -40,8 +40,8 @@ resource "rke_cluster" "local-rancher" {
   cluster_name          = "local-rancher"
   ignore_docker_version = true
   kubernetes_version    = var.rancher_kubernetes_version
-  enable_cri_dockerd    = length(regexall("v1.24.*", var.rancher_kubernetes_version)) > 0
-  
+  enable_cri_dockerd    = true
+
 
   cluster_yaml          = var.use_cluster_yaml == true ? file("./rancher-cluster.yaml") : ""
 }

@@ -18,7 +18,7 @@ resource "rancher2_cluster" "rke-custom" {
   name               = "rke-custom"
   rke_config {
     kubernetes_version = var.downstream_kubernetes_version
-    enable_cri_dockerd    = length(regexall("v1.24.*", var.downstream_kubernetes_version)) > 0
+    enable_cri_dockerd    = true
   }
 }
 
